@@ -1,0 +1,9 @@
+一、创建版本库
+1.git init
+将当前目录变成git可以管理的仓库
+2.把文件添加到版本库
+	注：不要使用windows自带的记事本编辑文本文件，其UTF-8编码会在每个文件开头添加0xEFBBBF
+git add <filename>
+	将文件添加到仓库中
+git commit -m <message>
+	将文件提交到仓库(可一次提交多个文件)
