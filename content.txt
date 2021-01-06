@@ -10,6 +10,19 @@ git commit -m <message>
 	
 二、时光机穿梭
 1.git status
-查看仓库当前状态
+	查看仓库当前状态
 2.git diff
-查看与上一个commit的不同之处
+	查看与上一个commit的不同之处
+
+版本回退
+1.git log
+	查看从最近到最远的提交日志
+	如果输出信息太多，可加上参数 --pretty=oneline
+	显示commit id等信息，可以使用可视化工具更清楚地查看
+2.版本表示
+	HEAD表示当前版本，上一个版本是HEAD^，再上一个版本就是HEAD^^
+	往上100个版本是HEAD~100
+3.git reset --hard HEAD^
+	回退到上一个版本
+4.git reflog
+	记录每一次命令，用于查询之前的操作，找到回退前的版本
