@@ -49,3 +49,6 @@ git commit -m <message>
 	此时再丢弃<工作区>的修改
 	
 删除文件
+1.git rm <filename>
+2.git checkout -- <filename>
+	撤销删除
