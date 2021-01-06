@@ -54,6 +54,7 @@ git commit -m <message>
 	撤销删除
 	
 三、远程仓库
+
 添加远程仓库
 1.git remote origin <git@github.com:<username>/<repository-name>>
 	关联远程库，名称为origin
@@ -63,3 +64,25 @@ git commit -m <message>
 	
 克隆远程仓库
 1.git clone <git@github.com:<username>/<repository-name>.git>
+
+
+四、分支管理
+
+创建与合并分支
+1.git check -b <branch-name>
+	-b参数表示创建并切换分支
+	相当于以下两条命令：
+	①git branch dev
+	②git checkout dev
+2.git branch
+	查看当前分支
+3.git merge <branch-name>
+	合并指定分支到当前分支
+4.git branch -d <branch-name>
+	删除指定分支
+
+更科学的切换分支命令
+1.git switch -c <branch-name>
+	创建并切换至指定分支
+2.git switch <branch-name>
+	切换分支
