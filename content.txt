@@ -7,3 +7,9 @@ git add <filename>
 	将文件添加到仓库中
 git commit -m <message>
 	将文件提交到仓库(可一次提交多个文件)
+	
+二、时光机穿梭
+1.git status
+查看仓库当前状态
+2.git diff
+查看与上一个commit的不同之处
