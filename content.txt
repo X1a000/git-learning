@@ -69,7 +69,7 @@ git commit -m <message>
 四、分支管理
 
 创建与合并分支
-1.git check -b <branch-name>
+1.git checkout -b <branch-name>
 	-b参数表示创建并切换分支
 	相当于以下两条命令：
 	①git branch dev
@@ -91,3 +91,46 @@ git commit -m <message>
 	两个分支有冲突的提交时，需要手动解决后再合并
 1.git log --graph
 	查看分支合并图
+	
+分支管理策略
+1.git merge --no-ff -m <message> <branch-name>
+	--no-ff参数，表示禁用Fast forward,即merge时会生成一个新的commit
+2.实际开发中的分支管理基本原则：
+	master分支应该是非常为稳定的，只用来发布新版本，平时不在master上干活
+	平时应在其他分支上干活，在发布新版本时再合并到master上去
+
+BUG分支
+1.每个BUG都可以通过一个新的临时分支来修复，修复后合并分支并将临时分支删除
+2.在工作过程中临时接到bug修复任务，无法commit时，使用stash将当前工作现场存储起来，等以后恢复现场继续工作
+	git stash
+3.之后，首先确认在哪个分支上修复bug，就从哪个分支上创建临时分支。假设在master上进行修复：
+	git checkout master //切换到master分支
+	git checkout -b issue-101	//在master分支上创建并切换到issue-101分支
+	
+	git add ......
+	git commit ......//修复bug
+	
+	git switch master //切换回master分支
+	git merge --no-ff -m "merged bug fix 101" issue-101 //完成合并
+	
+	git switch dev //切换回工作分支
+	git stash list //查看之前保存的工作现场
+	
+	git stash apply <stash-name>//恢复工作现场，但不删除stash
+	git stash drop <stash-name>//删除stash
+	git stash pop <stash-name>//恢复工作现场，同时删除stash
+	
+4.假设dev分支是早期从master分支上分出来的，若dev存在和master同样的bug，可以将之前提交的修复bug的修改复制到dev分支上
+	即复制一次commit
+	git cherry-pick <commit-id>
+	
+多人协作
+1.git remote 
+	查看远程库信息，使用git remote -v查看更详细信息
+2.git push origin <branch-name>
+	推送分支
+
+
+Rebase
+1.git rebase 
+	将分叉的提交历史整理成一条直线
