@@ -86,3 +86,8 @@ git commit -m <message>
 	创建并切换至指定分支
 2.git switch <branch-name>
 	切换分支
+	
+解决冲突
+	两个分支有冲突的提交时，需要手动解决后再合并
+1.git log --graph
+	查看分支合并图
